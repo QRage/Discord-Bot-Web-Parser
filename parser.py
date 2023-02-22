@@ -3,11 +3,13 @@ from bs4 import BeautifulSoup
 
 
 forum_domain = 'http://www.pathofexile.com'
-first_thread_page = "https://www.pathofexile.com/forum/view-thread/2551118/page/1"
+
+thread_en = "https://www.pathofexile.com/forum/view-thread/3290069/page/1"
+thread_ru = "https://www.pathofexile.com/forum/view-thread/2551118/page/1"
 headers = {
     "Authorization": "SAPISIDHASH 1623130218_185509d60d328a8b7be39f8419e3d33422df715c",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
-
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
 }
 
 
@@ -45,5 +47,10 @@ def get_all_posts_from_page(url):
     return posts
 
 
+def get_last_post(forum_thread_link):
+    return get_all_posts_from_page(get_last_page_href(forum_thread_link))[-1]
+
+
 if __name__ == '__main__':
-    print(get_all_posts_from_page(get_last_page_href(first_thread_page))[-1])
+    print(get_last_post(thread_en))
+    print(get_last_post(thread_ru))
