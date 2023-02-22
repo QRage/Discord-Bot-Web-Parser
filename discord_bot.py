@@ -18,8 +18,8 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f'We have logged in as {client.user}')
     await asyncio.gather(
-        compare_data(thread_en, "EN", 20),
-        compare_data(thread_ru, "RU", 20)
+        compare_data(thread_en, "EN", 600),
+        compare_data(thread_ru, "RU", 600)
     )
 
 
